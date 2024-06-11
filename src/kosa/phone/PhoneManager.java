@@ -1,5 +1,9 @@
 package kosa.phone;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -9,15 +13,6 @@ public class PhoneManager {
     Scanner in = new Scanner(System.in);
 
     public void addPhoneInfo(String name, String phoneNo, String birth) {
-
-/*
-        boolean flag = true;
-        for (int i = 0; i < phoneCount; i++) {
-            if (phoneList.get(i).phoneNo.equals(phoneNo)) {
-                flag = false;
-                break;
-            }
-        }*/
 
         // 번호가 존재하는지 중복 체크
         boolean flag = phoneList.stream().noneMatch(info -> info.getPhoneNo().equals(phoneNo));
@@ -100,6 +95,50 @@ public class PhoneManager {
             System.out.println("생일순으로 정렬하였습니다!");
         } else {
             System.out.println("제대로 입력해주세요");
+        }
+    }
+
+    public void outputFile() {
+        ObjectOutputStream oos = null;
+
+        try {
+            oos = new ObjectOutputStream(new FileOutputStream("phoneList.txt"));
+            // List가 Serializable을 구현했기 떄문에 사용 가능한 것!
+            oos.writeObject(phoneList);
+            System.out.println("phoneList.txt 파일에 입력되었습니다!");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                oos.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void inputFile() {
+        ObjectInputStream ois = null;
+        List<PhoneInfo> inputList;
+        try {
+            inputList = new ArrayList<>();
+            ois = new ObjectInputStream(new FileInputStream("phoneList.txt"));
+
+            inputList = (List<PhoneInfo>) ois.readObject();
+
+            for (PhoneInfo list : inputList) {
+                list.show();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                ois.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }

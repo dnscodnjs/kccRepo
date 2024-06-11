@@ -2,7 +2,6 @@ package kosa.phone;
 
 import java.io.BufferedReader;
 import java.io.*;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -12,7 +11,7 @@ public class Main {
 
         while (true) {
 
-            System.out.println("1.추가 2.전체출력 3.검색 4.수정 5.삭제 6.정렬 7.종료");
+            System.out.println("1.추가 2.전체출력 3.검색 4.수정 5.삭제 6.정렬 7. 데이터 저장 8. 데이터 불러오기 9.종료");
             System.out.print("번호를 입력해주세요 => ");
 
             int menu = Integer.parseInt(br.readLine());
@@ -59,24 +58,35 @@ public class Main {
                 String name = br.readLine();
                 phoneManager.searchPhoneInfo(name);
                 System.out.println("===================");
-            } else if (menu == 4) {
+            }
+            else if (menu == 4) {
                 System.out.print("수정할 전화번호부의 이름을 입력해주세요 =>");
                 String name = br.readLine();
                 phoneManager.updatePhoneInfo(name);
                 System.out.println("===================");
-            } else if (menu == 5) {
+            }
+            else if (menu == 5) {
                 System.out.print("삭제할 전화번호부의 이름을 입력해주세요 =>");
                 String name = br.readLine();
                 phoneManager.deletePhoneInfo(name);
                 System.out.println("===================");
-            } else if (menu == 6) {
+            }
+            else if (menu == 6) {
                 System.out.println("정렬 기준");
                 System.out.println("1. 이름순 2. 번호순 3. 생일순");
                 int num = Integer.parseInt(br.readLine());
                 phoneManager.sortPhoneInfo(num);
-            } else if (menu == 7) {
+            }
+            else if (menu == 7) {
+                phoneManager.outputFile();
+            }
+            else if (menu == 8) {
+                phoneManager.inputFile();
+            }
+            else if (menu == 9) {
                 return;
-            } else {
+            }
+            else {
                 System.out.println("⚠️올바른 번호를 입력해주세요!!⚠️");
                 System.out.println("===================");
             }

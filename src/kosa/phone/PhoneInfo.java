@@ -1,5 +1,8 @@
 package kosa.phone;
-public class PhoneInfo {
+
+import java.io.Serializable;
+
+public class PhoneInfo implements Serializable {
     String name;
     String phoneNo;
     String birth;
@@ -42,5 +45,14 @@ public class PhoneInfo {
 
     public void setBirth(String birth) {
         this.birth = birth;
+    }
+
+    @Override
+    public String toString() {
+        return "PhoneInfo{" +
+                "name='" + name + '\'' +
+                ", phoneNo='" + phoneNo + '\'' +
+                ", birth='" + birth + '\'' +
+                '}';
     }
 }
