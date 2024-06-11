@@ -19,5 +19,11 @@ public class FileMission {
         File dest = new File("C:\\\\KCC\\\\temp\\\\puppy.JPG");
 
         Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);*/
+
+        String dir = "C:\\KCC\\work\\java_work\\Kcc_java\\src\\kosa";
+        String copyDir = "C:\\KCC\\temp\\kosa";
+
+        CopyUtil.copyDirect(new File(dir), new File(copyDir));
+
     }
 }
