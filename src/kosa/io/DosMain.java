@@ -54,7 +54,6 @@ public class DosMain {
                 DosManger.makeFile(file, input);
             } else if (input.equals("종료")) return;
 
-
             System.out.println("===============");
         }
     }
