@@ -17,8 +17,11 @@ public class Main {
             int menu = Integer.parseInt(br.readLine());
 
             if (menu == 1) {
-
                 System.out.println("추가할 정보를 입력해주세요");
+                System.out.println("1. 회사 정보 추가");
+                System.out.println("2. 대학 정보 추가");
+                System.out.print("번호를 입력해주세요 => ");
+                int addMenu = Integer.parseInt(br.readLine());
 
                 System.out.print("이름 => ");
                 String name = br.readLine();
@@ -45,9 +48,22 @@ public class Main {
                     }
                 }
 
-                phoneManager.addPhoneInfo(name, phone, birth);
+                if (addMenu == 1) {
+                    System.out.print("부서 => ");
+                    String dept = br.readLine();
+                    System.out.print("직책 => ");
+                    String position = br.readLine();
+                    phoneManager.addPhoneInfo(new Company(name, phone, birth, dept, position));
+                } else if (addMenu == 2) {
+                    System.out.print("전공 => ");
+                    String major = br.readLine();
+                    System.out.print("학번 => ");
+                    String year = br.readLine();
+                    phoneManager.addPhoneInfo(new Universe(name, phone, birth, major, year));
+                } else {
+                    System.out.println("⚠️올바른 번호를 입력해주세요!!⚠️");
+                }
                 System.out.println("===================");
-
             } else if (menu == 2) {
 
                 phoneManager.listPhoneInfo();
@@ -58,35 +74,28 @@ public class Main {
                 String name = br.readLine();
                 phoneManager.searchPhoneInfo(name);
                 System.out.println("===================");
-            }
-            else if (menu == 4) {
+            } else if (menu == 4) {
                 System.out.print("수정할 전화번호부의 이름을 입력해주세요 =>");
                 String name = br.readLine();
                 phoneManager.updatePhoneInfo(name);
                 System.out.println("===================");
-            }
-            else if (menu == 5) {
+            } else if (menu == 5) {
                 System.out.print("삭제할 전화번호부의 이름을 입력해주세요 =>");
                 String name = br.readLine();
                 phoneManager.deletePhoneInfo(name);
                 System.out.println("===================");
-            }
-            else if (menu == 6) {
+            } else if (menu == 6) {
                 System.out.println("정렬 기준");
                 System.out.println("1. 이름순 2. 번호순 3. 생일순");
                 int num = Integer.parseInt(br.readLine());
                 phoneManager.sortPhoneInfo(num);
-            }
-            else if (menu == 7) {
+            } else if (menu == 7) {
                 phoneManager.outputFile();
-            }
-            else if (menu == 8) {
+            } else if (menu == 8) {
                 phoneManager.inputFile();
-            }
-            else if (menu == 9) {
+            } else if (menu == 9) {
                 return;
-            }
-            else {
+            } else {
                 System.out.println("⚠️올바른 번호를 입력해주세요!!⚠️");
                 System.out.println("===================");
             }

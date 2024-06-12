@@ -15,7 +15,8 @@ public class Company extends PhoneInfo {
     @Override
     public void show() {
         super.show();
-        System.out.println("전공 : " + major);
-        System.out.println("학번 : " + year);
+        System.out.println("부서 : " + major);
+        System.out.println("직책 : " + year);
     }
 }
+

@@ -12,17 +12,16 @@ public class PhoneManager {
     static List<PhoneInfo> phoneList = new ArrayList<>();
     Scanner in = new Scanner(System.in);
 
-    public void addPhoneInfo(String name, String phoneNo, String birth) {
-
+    public void addPhoneInfo(PhoneInfo info) {
         // 번호가 존재하는지 중복 체크
-        boolean flag = phoneList.stream().noneMatch(info -> info.getPhoneNo().equals(phoneNo));
+        boolean flag = phoneList.stream().noneMatch(phone -> phone.getPhoneNo().equals(info.getPhoneNo()));
 
         if (flag) {
-            if (10 <= phoneList.size()) {
+            if (phoneList.size() >= 10) {
                 System.out.println("⚠️전화번호부가 가득 찼습니다 ⚠️");
                 System.out.println();
             } else {
-                phoneList.add(new PhoneInfo(name, phoneNo, birth));
+                phoneList.add(info);
                 phoneCount++;
             }
         } else {
@@ -141,4 +140,5 @@ public class PhoneManager {
             }
         }
     }
+
 }

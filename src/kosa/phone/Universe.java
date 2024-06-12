@@ -15,7 +15,7 @@ public class Universe extends PhoneInfo{
     @Override
     public void show() {
         super.show();
-        System.out.println("부서 : " + dept);
-        System.out.println("직책 : " + position);
+        System.out.println("전공 : " + dept);
+        System.out.println("학번 : " + position);
     }
 }
