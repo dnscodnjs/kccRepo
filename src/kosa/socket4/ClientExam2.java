@@ -44,7 +44,7 @@ public class ClientExam2 {
         p1.add(scrollPane, BorderLayout.CENTER);
         p1.add(inTx, BorderLayout.SOUTH);
 
-        ok = new JButton("����");
+        ok = new JButton("방 나가기");
         list = new List();
 
         p2.add(list, BorderLayout.CENTER);

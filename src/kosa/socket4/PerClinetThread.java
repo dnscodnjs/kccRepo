@@ -39,7 +39,7 @@ public class PerClinetThread extends Thread {
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             name = br.readLine();
-            sendAll("##<" + name + ">�����ϼ̽��ϴ�.##");
+            sendAll("<" + name + "님이 들어왔습니다.>");
             while (true) {
                 String str = br.readLine();
                 if (str == null) {
@@ -51,7 +51,7 @@ public class PerClinetThread extends Thread {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            sendAll("##[" + name + "]�� �����ϼ̽��ϴ�.##");
+            sendAll("[" + name + "]님이 나가셨습니다.");
             list.remove(writer);
             try {
                 socket.close();
