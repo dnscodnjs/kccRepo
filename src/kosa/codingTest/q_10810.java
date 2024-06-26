@@ -30,5 +30,4 @@ public class q_10810 {
             System.out.print(num + " ");
         }
     }
-
 }
